@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}{{title}}{% endblock title %}
+
+{% block content %}
+    <div class="container">
+        <h1>Tambah List</h1>
+        <form action="{% url "create-task" %}" method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Buat List">
+        </form>
+    </div>
+{% endblock content %}

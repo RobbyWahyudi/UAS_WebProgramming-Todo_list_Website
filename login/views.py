@@ -18,7 +18,7 @@ def user_login(request):
             if user is not None:
                 login(request, user)
                 messages.success(request, f"Welcome, {username}!")
-                return redirect("home")
+                return redirect("task")
             else:
                 messages.error(request, "Invalid username or password.")
     else:

@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     "menu",
     "login",
     "register",
+    "website",
 ]
 
 MIDDLEWARE = [
