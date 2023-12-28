@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}{{title}}{% endblock title %}
+
+{% block content %}
+    <div class="container">
+        <h1>Selamat Datang di Website To-do List</h1>
+    
+        <a href="{% url "register" %}">Get started</a>
+
+    </div>
+{% endblock content %}

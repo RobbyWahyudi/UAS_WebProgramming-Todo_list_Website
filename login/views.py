@@ -23,5 +23,7 @@ def user_login(request):
                 messages.error(request, "Invalid username or password.")
     else:
         form = AuthenticationForm()
+
+    context = {"title": "Login Page", "form": form}
     template = loader.get_template("login.html")
-    return HttpResponse(template.render({"form": form}))
+    return HttpResponse(template.render(context, request))
