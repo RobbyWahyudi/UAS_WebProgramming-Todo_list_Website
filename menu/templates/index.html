@@ -4,13 +4,13 @@
 
 {% block content %}
     <div class="container">
-        <a href="{% url 'user-logout' %}" class="btn btn-dark">Logout</a>
-        <h1>To-do List Website</h1>
+        <a href="{% url 'user-logout' %}" class="btn btn-outline-dark">Logout</a>
+        <h1>Hi {{ request.user }}, Ayo Buat To-do Listmu</h1>
         <h2>Task List</h2>
         <a href="{% url "create-task" %}" class="btn btn-outline-success btn-sm">Buat List</a>
         <ul>
             {% for task in tasks %}
-                <li>{{ task.judul }} - {{ task.kategori.nama }} - {{ task.status }}</li>
+                <li>{{ task.judul }} - {{ task.kategori.nama }} - {{ task.status }} - {{ task.tanggal_jatuh_tempo }}</li>
                 {% if task.status == 'Belum Selesai' or task.status == 'belum_selesai' %}
                     <a href="{% url 'complete-task' task.id %}" class="btn btn-outline-primary btn-sm">Selesai</a>
                 {% endif %}

@@ -1,4 +1,6 @@
 {% extends "base.html" %}
+{% load static %}
+
 
 {% block title %}{{title}}{% endblock title %}
 
@@ -8,7 +10,10 @@
         <form action="{% url "create-task" %}" method="POST">
             {% csrf_token %}
             {{ form.as_p }}
-            <input type="submit" value="Buat List">
+
+            <input class="btn btn-secondary" type="submit" value="Buat List">
         </form>
+
     </div>
+
 {% endblock content %}

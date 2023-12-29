@@ -1,12 +1,21 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}{{title}}{% endblock title %}
 
 {% block content %}
-    <div class="container">
-        <h1>Selamat Datang di Website To-do List</h1>
-    
-        <a href="{% url "register" %}">Get started</a>
-
-    </div>
+    <div class="container col-xxl-8 px-4 py-6">
+        <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+            <div class="col-10 col-sm-8 col-lg-6">
+                <img src="{% static "images/hero.jpg" %}" class="d-block mx-lg-auto img-fluid" alt="Hero images" width="700" height="500" loading="lazy">
+            </div>
+            <div class="col-lg-6">
+                <h1 class="display-6 fw-bold lh-1 mb-3">OrganizeMe - Teman Terbaik Anda dalam Mengatur Kehidupan!</h1>
+                <p class="lead">Mudah dan Efisien, OrganizeMe adalah alat yang tepat untuk membantu Anda mengelola tugas sehari-hari, mencatat acara penting, dan menjadwalkan impian Anda. Dengan antarmuka yang ramah pengguna, OrganizeMe memudahkan Anda dalam menciptakan keseimbangan antara pekerjaan, kehidupan pribadi, dan momen berharga.</p>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                    <a href="{% url "register" %}" class="btn btn-primary btn-lg px-4 me-md-2">Get Started</a>
+                </div>
+            </div>
+        </div>
+      </div>
 {% endblock content %}
