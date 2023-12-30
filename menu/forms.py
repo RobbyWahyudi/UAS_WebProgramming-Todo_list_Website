@@ -7,16 +7,14 @@ class Task_form(forms.ModelForm):
         model = Task
         fields = [
             "judul",
-            "deskripsi",
             "tanggal_jatuh_tempo",
             "kategori",
         ]
 
         widgets = {
             "judul": forms.TextInput(attrs={"class": "form-control"}),
-            "deskripsi": forms.TextInput(attrs={"class": "form-control"}),
             "tanggal_jatuh_tempo": forms.TextInput(
-                attrs={"class": "form-control", "type": "date"}
+                attrs={"class": "form-control", "type": "datetime-local"}
             ),
             "kategori": forms.Select(attrs={"class": "form-control"}),
         }

@@ -35,6 +35,26 @@ def create_task(request):
     return HttpResponse(template.render(context, request))
 
 
+def edit_task(request, task_id):
+    task = get_object_or_404(Task, id=task_id, user=request.user)
+
+    if request.method == "POST":
+        form = Task_form(request.POST, instance=task)
+        if form.is_valid():
+            form.save()
+            return redirect("task")
+    else:
+        form = Task_form(instance=task)
+
+    context = {
+        "title": "Edit Task",
+        "form": form,
+        "task": task,
+    }
+    template = loader.get_template("edit_task.html")
+    return HttpResponse(template.render(context, request))
+
+
 def complete_task(request, task_id):
     task = get_object_or_404(Task, id=task_id)
     if request.user == task.user:

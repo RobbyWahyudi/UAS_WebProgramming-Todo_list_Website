@@ -16,8 +16,7 @@ class Task(models.Model):
     ]
 
     judul = models.CharField(max_length=200)
-    deskripsi = models.TextField()
-    tanggal_jatuh_tempo = models.DateField()
+    tanggal_jatuh_tempo = models.DateTimeField()
     status = models.CharField(
         max_length=20, choices=PILIHAN_STATUS, default="Belum Selesai"
     )
