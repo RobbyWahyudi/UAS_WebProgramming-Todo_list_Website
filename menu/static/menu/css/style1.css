@@ -1,0 +1,33 @@
+.button a {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.info {
+  display: none;
+  position: absolute;
+  top: 100%;
+  background-color: #f9f9f9;
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.button a:hover .info {
+  display: block;
+}
+
+.button {
+  display: flex;
+  justify-content: right;
+  flex-wrap: wrap;
+  gap: 9px;
+}
+
+.card {
+  border: none !important;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 15px;
+}

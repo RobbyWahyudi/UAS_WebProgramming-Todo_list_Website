@@ -1,11 +1,13 @@
 from django.contrib.auth import logout
 from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.template import loader
 from .forms import Task_form
 from .models import Task
 
 
+@login_required(login_url="user-login")
 def task(request):
     task = Task.objects.filter(user=request.user)
     context = {
@@ -16,6 +18,7 @@ def task(request):
     return HttpResponse(template.render(context, request))
 
 
+@login_required(login_url="user-login")
 def create_task(request):
     if request.method == "POST":
         form = Task_form(request.POST)
@@ -35,6 +38,7 @@ def create_task(request):
     return HttpResponse(template.render(context, request))
 
 
+@login_required(login_url="user-login")
 def edit_task(request, task_id):
     task = get_object_or_404(Task, id=task_id, user=request.user)
 
@@ -55,6 +59,7 @@ def edit_task(request, task_id):
     return HttpResponse(template.render(context, request))
 
 
+@login_required(login_url="user-login")
 def complete_task(request, task_id):
     task = get_object_or_404(Task, id=task_id)
     if request.user == task.user:
@@ -65,6 +70,7 @@ def complete_task(request, task_id):
         return render(request, "Akses ditolak!")
 
 
+@login_required(login_url="user-login")
 def delete_task(request, task_id):
     task = get_object_or_404(Task, id=task_id)
     if request.user == task.user:

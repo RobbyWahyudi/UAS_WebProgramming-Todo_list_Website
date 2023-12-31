@@ -12,9 +12,23 @@ class Task_form(forms.ModelForm):
         ]
 
         widgets = {
-            "judul": forms.TextInput(attrs={"class": "form-control"}),
-            "tanggal_jatuh_tempo": forms.TextInput(
-                attrs={"class": "form-control", "type": "datetime-local"}
+            "judul": forms.TextInput(
+                attrs={
+                    "class": "form-control",
+                    "id": "judul",
+                }
             ),
-            "kategori": forms.Select(attrs={"class": "form-control"}),
+            "tanggal_jatuh_tempo": forms.TextInput(
+                attrs={
+                    "class": "form-control",
+                    "type": "datetime-local",
+                    "id": "tgl",
+                }
+            ),
+            "kategori": forms.Select(
+                attrs={
+                    "class": "form-control",
+                    "id": "kategori",
+                }
+            ),
         }
