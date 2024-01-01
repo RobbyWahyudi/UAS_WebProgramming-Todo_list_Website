@@ -4,7 +4,7 @@
 {% block title %}{{title}}{% endblock title %}
 
 {% block app_css %}
-<link rel="stylesheet" href="{% static 'menu/css/style1.css' %}">
+<link rel="stylesheet" href="{% static 'menu/css/style.css' %}">
 {% endblock app_css %}
 
 {% block content %}
@@ -46,7 +46,33 @@
                             <ion-icon name="create-outline" class="text-dark fs-3"></ion-icon>
                             <div class="info text-dark">edit</div>
                         </a>
-                        <a href="{% url "delete-task" task.id %}">
+                        <a href="#" class="delete-task" data-task-id="{{ task.id }}" >
+                            <ion-icon name="trash-outline" class="text-danger fs-3"></ion-icon>
+                            <div class="info text-dark">hapus</div>
+                        </a>
+                    </div>  
+                </div>
+            </div>
+        {% empty %}
+            <div class="card mb-3">
+                <div class="card-body d-flex justify-content-between align-items-center">
+                    <div class="content w-75">
+                        <h5 class="card-title">Default</h5>
+                        <p class="card-text">Kategori Default</p>
+                        <p class="card-text">
+                            <small class="text-muted">Jan. 1, 2024, 0 a.m.</small> | <span class="text-danger">Belum Selesai</span>
+                        </p>
+                    </div>
+                    <div class="button w-25">
+                        <a href="#">
+                            <ion-icon name="checkmark-outline" class="text-success fs-2 fw-bold"></ion-icon>
+                            <div class="info text-dark">selesai</div>
+                        </a>
+                        <a href="#">
+                            <ion-icon name="create-outline" class="text-dark fs-3"></ion-icon>
+                            <div class="info text-dark">edit</div>
+                        </a>
+                        <a href="#" >
                             <ion-icon name="trash-outline" class="text-danger fs-3"></ion-icon>
                             <div class="info text-dark">hapus</div>
                         </a>
@@ -56,15 +82,5 @@
         {% endfor %}
     </div>
 
-    
+    <script src="{% static "menu/js/script.js" %}"></script>
 {% endblock content %}
-    {% comment %} <ul>
-            {% for task in tasks %}
-                <li>{{ task.judul }} - {{ task.kategori.nama }} - {{ task.status }} - {{ task.tanggal_jatuh_tempo }}</li>
-                {% if task.status == 'Belum Selesai' or task.status == 'belum_selesai' %}
-                    <a href="{% url 'complete-task' task.id %}" class="btn btn-outline-success btn-sm">Selesai</a>
-                {% endif %}
-                <a href="{% url 'edit-task' task.id %}" class="btn btn-outline-primary btn-sm">Edit</a>
-                <a href="{% url "delete-task" task.id %}" class="btn btn-outline-danger btn-sm">Hapus</a>
-            {% endfor %}
-        </ul> {% endcomment %}

@@ -3,8 +3,8 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.template import loader
-from .forms import Task_form
-from .models import Task
+from .forms import Task_form, Kategori_Form
+from .models import Task, Kategori
 
 
 @login_required(login_url="user-login")
@@ -78,6 +78,24 @@ def delete_task(request, task_id):
         return redirect("task")
     else:
         return render(request, "Akses ditolak!")
+
+
+@login_required(login_url="user-login")
+def add_category(request):
+    if request.method == "POST":
+        form = Kategori_Form(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect("create-task")
+    else:
+        form = Kategori_Form()
+
+    context = {
+        "title": "Add Category",
+        "form": form,
+    }
+    template = loader.get_template("add_category.html")
+    return HttpResponse(template.render(context, request))
 
 
 def user_logout(request):

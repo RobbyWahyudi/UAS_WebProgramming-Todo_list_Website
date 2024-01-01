@@ -1,5 +1,5 @@
 from django import forms
-from .models import Task
+from .models import Task, Kategori
 
 
 class Task_form(forms.ModelForm):
@@ -31,4 +31,18 @@ class Task_form(forms.ModelForm):
                     "id": "kategori",
                 }
             ),
+        }
+
+
+class Kategori_Form(forms.ModelForm):
+    class Meta:
+        model = Kategori
+        fields = ["nama"]
+        widgets = {
+            "nama": forms.TextInput(
+                attrs={
+                    "class": "form-control",
+                    "id": "kategori",
+                }
+            )
         }
